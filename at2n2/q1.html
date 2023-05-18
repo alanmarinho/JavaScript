@@ -1,0 +1,106 @@
+<!-- #1. Construa uma aplicação (script) que receba 2 números inteiros e verifique qual o maior, o menor ou se ambos são iguais, em seguida informe-os em ordem crescente e também na ordem decrescente. -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q1</title>
+</head>
+
+<style>
+    html,
+    body {
+        margin: 2;
+        padding: 2;
+        font-family: consolas, "times";
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .main form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main input {
+        width: 200px;
+    }
+
+    .main .div1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <div class="titulo">
+        <h5>#1. Construa uma aplicação (script) que receba 2 números inteiros e verifique qual o maior, o menor ou se
+            ambossão iguais, em seguida informe-os em ordem crescente e também na ordem decrescente.</h5>
+    </div>
+
+    <div class="main">
+        <form class="formulario" onsubmit="return executa(event)">
+            <input type="number" id="numero1" placeholder="Digite o primeiro valor inteiro" required><br>
+            <input type="number" id="numero2" placeholder="Digite o segundo valor inteiro" required><br>
+            <button type="submit">Próximo</button>
+        </form>
+        <div id="div1">Resultado: </div>
+
+    </div>
+
+</body>
+<script>
+    function ordenaCrescente(numeros) {
+        numeros.sort();
+        return numeros
+    }
+    function ordenaDecrescente(numeros) {
+        numeros.sort();
+        numeros.reverse();
+        return numeros
+    }
+
+    function verificaIgualdade(numeros) {
+        return numeros.every(function (elemento) {
+            return elemento === numeros[0];
+        });
+    }
+
+    function limpar() {
+        document.getElementById("numero1").value = "";
+        document.getElementById("numero2").value = "";
+    }
+
+    function executa() {
+        event.preventDefault()
+        let numeros = [];
+
+        let resultadoDiv = document.getElementById("div1");
+
+        numeros.push(document.getElementById("numero1").value);
+        numeros.push(document.getElementById("numero2").value);
+
+        if (verificaIgualdade(numeros) == true) {
+            resultadoDiv.innerHTML = "Resultado: <br> Numeros iguais";
+        } else {
+            resultadoDiv.innerHTML = `Resultado:<br> Ordem crescente: ${ordenaCrescente(numeros)} <br> Ordem decrescente: ${ordenaDecrescente(numeros)}`;
+        }
+        limpar()
+    }
+
+</script>
+</body>
+
+</html>

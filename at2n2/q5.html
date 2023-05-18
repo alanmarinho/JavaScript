@@ -1,0 +1,119 @@
+<!-- #5. Construa uma mini-aplicação (script) que receba o nome, a altura e o peso de uma pessoa, em seguida informar o nome, o IMC e em qual categoria a mesma se encontra. Obs.: Utilizar a tabela abaixo para classificação. -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q5</title>
+</head>
+
+<style>
+    html,
+    body {
+        margin: 2;
+        padding: 2;
+        font-family: consolas, "times";
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .main form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main input {
+        width: 200px;
+    }
+
+    .main .div1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <h5>#5. Construa uma mini-aplicação (script) que receba o nome, a altura e o peso de uma pessoa, em seguida informar
+        o nome, o IMC e em qual categoria a mesma se encontra.
+
+    </h5>
+
+    <div class="main">
+        <form class="formulario" onsubmit="return executa(event)">
+            <input type="text" id="nome" placeholder="Digite seu nome" required><br>
+            <input type="number" id="peso" step="any" placeholder="Digite seu peso" min="0" max="130" required><br>
+            <input type="number" id="altura" step="any" placeholder="Digite sua altura" min="0.1" max="5" required><br>
+            <button type="submit">Próximo</button>
+        </form>
+        <div id="div1">Resultado: </div><br>
+
+        <script>
+            let idade
+            let peso
+            let altura
+
+            function IMC(altura, peso) {
+                return peso / (altura * altura);
+            }
+
+            function categoriaIMC(imc){
+                switch (true) {
+                    case (imc < 18.5):
+                        return "Magraza"
+                        break;
+                    case (imc >= 18.5 || imc <= 24.9):
+                        return "Saudável"
+                        break;
+                    case (imc >= 25.0 || imc <= 29.9):
+                        return "Sobrepeso"
+                        break;
+                    case (imc >= 30.0 || imc <= 34.9):
+                        return "Obesodade gral I"
+                        break;
+                    case (imc >= 35.0 || imc <= 39.9):
+                        return "Obesodade gral II"
+                        break;
+                    case (imc >= 40.0):
+                        return "Obesodade gral III"
+                        break;
+                }
+            }
+
+            function limpar() {
+                document.getElementById("nome").value = "";
+                document.getElementById("peso").value = "";
+                document.getElementById("altura").value = "";
+            }
+
+            function executa() {
+                let imc
+                event.preventDefault();
+                resultadoDiv = document.getElementById("div1");
+                nome = document.getElementById("nome").value;
+                peso = document.getElementById("peso").value;
+                altura = document.getElementById("altura").value;
+                resultadoDiv.innerHTML = "Resultado: <br>";
+                imc = IMC(altura, peso)
+
+                resultadoDiv.innerHTML += `Nome: ${nome}<br>IMC: ${imc.toFixed(4)}<br>Categoria: ${categoriaIMC(imc)}`;
+                limpar();
+            }
+        </script>
+
+    </div>
+</body>
+
+</html>

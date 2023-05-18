@@ -1,0 +1,162 @@
+<!-- #3. Construa uma estrutura (script) que receba um nome uma data no formato dia e mês de uma pessoa por fim informar o nome dela e o signo do zodíaco. -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q3</title>
+</head>
+
+<style>
+    html,
+    body {
+        margin: 2;
+        padding: 2;
+        font-family: consolas, "times";
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .main form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main input {
+        width: 200px;
+    }
+
+    .main .div1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <h5>#3. Construa uma estrutura (script) que receba um nome uma data no formato dia e mês de uma pessoa por fim
+        informar o nome dela e o signo do zodíaco.
+    </h5>
+    <div class="main">
+        <form class="formulario" onsubmit="return executa(event)">
+            Digite seu Nome:<input type="text" id="nome" placeholder="Fulano de Tal" required><br>
+            Digite sua data de nascimento:<input type="datetime" id="data" placeholder="dia/mes"
+                pattern="(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])" required />
+            <button type="submit">Próximo</button>
+        </form>
+        <div id="div1">Resultado: </div><br>
+
+    </div>
+
+    <script>
+        let nome
+        let dia
+        let mes
+        let dataNascimneto
+        let resultadoDiv = document.getElementById("div1");
+
+        function separaDiaMes(data) {
+            [dia, mes] = data.split('/')
+        }
+
+        function limpar() {
+            document.getElementById("nome").value = "";
+            document.getElementById("data").value = "";
+
+        }
+
+        function signo(dia, mes) {
+            switch (mes) {
+                case '01':
+                    if (dia <= 19) {
+                        return "Capricórnio"
+                    } else return "Aquário"
+                    break;
+                case '02':
+                    if (dia <= 18) {
+                        return "Aquário"
+                    } else return "Peixes"
+                    break;
+                case '03':
+                    if (dia <= 20) {
+                        return "Peixes"
+                    } else return "Áries"
+                    break;
+                case '04':
+                    if (dia <= 19) {
+                        return "Áries"
+                    } else return "Touro"
+                    break;
+                case '05':
+                    if (dia <= 20) {
+                        return "Touro"
+                    } else return "Gêmeos"
+                    break;
+                case '06':
+                    if (dia <= 20) {
+                        return "Gêmeos"
+                    } else return "Câncer"
+                    break;
+                case '07':
+                    if (dia <= 22) {
+                        return "Câncer"
+                    } else return "Leão"
+                    break;
+                case '08':
+                    if (dia <= 22) {
+                        return "Leão"
+                    } else return "Virgem"
+                    break;
+                case '09':
+                    if (dia <= 22) {
+                        return "Virgem"
+                    } else return "Libra"
+                    break;
+                case '10':
+                    if (dia <= 22) {
+                        return "Libra"
+                    } else return "Escorpião"
+                    break;
+                case '11':
+                    if (dia <= 21) {
+                        return "Escorpião"
+                    } else return "Sagitário"
+                    break;
+                case '12':
+                    if (dia <= 21) {
+                        return "Sagitário"
+                    } else return "Capricórnio"
+                    break;
+            }
+        }
+
+        function executa() {
+            event.preventDefault();
+            resultadoDiv.innerHTML = "Resultado: <br>";
+
+
+            nome = document.getElementById("nome").value;
+            dataNascimneto = document.getElementById("data").value;
+
+            separaDiaMes(dataNascimneto);
+            resultadoDiv.innerHTML += `Seu Nome é: ${nome} <br> Sua data de nascimento: ${dataNascimneto}<br> Seu sígno: ${signo(dia, mes)}`;
+            
+            limpar();
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!-- #4. Construa uma aplicação (script) que receba um número não nulo e informe se o mesmo é primo. Vale lembrar que o número será primo se ele for divisível por ele próprio e por 1. Obs.: O número 1 não é primo e o menor número primo é 2. -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q4</title>
+</head>
+
+<style>
+    html,
+    body {
+        margin: 2;
+        padding: 2;
+        font-family: consolas, "times";
+    }
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .main form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main input {
+        width: 200px;
+    }
+
+    .main .div1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <h5>#4. Construa uma aplicação (script) que receba um número não nulo e informe se o mesmo é primo. Vale lembrar que
+        o número será primo se ele for divisível por ele próprio e por 1. Obs.: O número 1 não é primo e o menor número
+        primo é 2.
+    </h5>
+
+    <div class="main">
+        <form class="formulario" onsubmit="return executa(event)">
+            <input type="number" id="numero" placeholder="Digite um número" min="0" required><br>
+            <button type="submit">Próximo</button>
+        </form>
+        <div id="div1">Resultado: </div><br>
+
+        <script>
+            let numero
+            let resultadoDiv
+
+            function verificaPrimo(numero) {
+                if (numero <= 1) {
+                    return false;
+                }
+                for (let i = 2; i <= Math.sqrt(numero); i++) {
+                    if (numero % i == 0) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            function limpar() {
+                document.getElementById("numero").value = "";
+            }
+
+            function executa() {
+                resultadoDiv = document.getElementById("div1");
+                numero = document.getElementById("numero").value;
+                event.preventDefault();
+                resultadoDiv.innerHTML = "Resultado: <br>";
+
+                verificaPrimo(numero);
+                resultadoDiv.innerHTML += `O número ${numero} ${verificaPrimo(numero) ? "é primo" : "não é primo"}`;
+
+                limpar();
+            }
+        </script>
+
+    </div>
+</body>
+
+</html>
