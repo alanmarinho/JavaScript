@@ -1,0 +1,42 @@
+<!-- #4. Construa um script que receba o nome de um alun@, a disciplina, carga horária da disciplina, três notas e a
+quantidade de faltas do mesmo. Por fim exibir: Nome, média, percentual de frequência, resultado se aprovado por média,
+ou reprovado por média, ou reprovado por falta ou reprovado por média e por falta. Obs1.: Considerar para aprovação
+média >= 7.0 e <=10.0. Obs2.: Reprovado por falta se obtiver mais de 25% de faltas.  -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q4</title>
+</head>
+
+<link rel="stylesheet" href="./css/estilo.css">
+
+<body>
+    <h5>#4. Construa um script que receba o nome de um alun@, a disciplina, carga horária da disciplina, três notas e a
+        quantidade de faltas do mesmo. Por fim exibir: Nome, média, percentual de frequência, resultado se aprovado por
+        média, ou reprovado por média, ou reprovado por falta ou reprovado por média e por falta. Obs1.: Considerar para
+        aprovação média >= 7.0 e <=10.0. Obs2.: Reprovado por falta se obtiver mais de 25% de faltas. </h5>
+
+            <div class="centro">
+                <form class="formulario" onsubmit="return executa(event)">
+                    <input type="text" id="nome" placeholder="Nome do aluno(a)" required><br>
+                    <input type="text" id="disciplina" placeholder="Nome da disciplina" required><br>
+                    <input type="number" id="cargaHoraria" min="1" placeholder="Carga horária" required><br>
+                    <input type="number" id="nota1" min="0" step="any" max="10" placeholder="Nota 1" required><br>
+                    <input type="number" id="nota2" min="0" step="any" max="10" placeholder="Nota 2" required><br>
+                    <input type="number" id="nota3" min="0" step="any" max="10" placeholder="Nota 3" required><br>
+                    <input type="number" id="quantFaltas" placeholder="Quantidade de faltas" min="0" oninput="if(parseInt(this.value) > parseInt(cargaHoraria.value)) this.setCustomValidity('A quantidade de faltas não pode ser maior que a carga horária.'); else this.setCustomValidity('');" required><br>
+                    <input type="submit" value="Enviar" class="enviar">
+                </form>
+                <button type="button" id="limpar" name="limpar" onclick="limpar()">Limpar</button>
+                <div id="div1">Resultado: </div><br>
+            </div>
+
+            <script src="./js/script.js"></script>
+
+</body>
+
+</html>

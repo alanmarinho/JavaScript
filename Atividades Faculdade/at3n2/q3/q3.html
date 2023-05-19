@@ -1,0 +1,51 @@
+<!-- #3.  Elabore um script que calcule o que deve ser pago por um produto, considerando o preço normal de etiqueta e a escolha da condição de pagamento. Utilize os códigos da tabela a seguir para ler qual a condição de pagamento escolhida e efetuar o cálculo adequado. Código Condição de pagamento: 
+(A) À vista em dinheiro recebe 15% de desconto;
+(B) À vista no cartão de crédito, recebe 10% de desconto;
+(C) Em duas vezes, preço normal de etiqueta com juros de 10%;
+(D) Em três vezes, preço normal de etiqueta mais juros de 15%;
+(E) Á vista no Pix 20% de desconto. -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q3</title>
+</head>
+
+<link rel="stylesheet" href="./css/estilo.css">
+
+<body>
+    <h5>#3. Elabore um script que calcule o que deve ser pago por um produto, considerando o preço normal de etiqueta e
+        a escolha da condição de pagamento. Utilize os códigos da tabela a seguir para ler qual a condição de pagamento
+        escolhida e efetuar o cálculo adequado. Código Condição de pagamento:<br>
+        (A) À vista em dinheiro recebe 15% de desconto;<br>
+        (B) À vista no cartão de crédito, recebe 10% de desconto;<br>
+        (C) Em duas vezes, preço normal de etiqueta com juros de 10%;<br>
+        (D) Em três vezes, preço normal de etiqueta mais juros de 15%;<br>
+        (E) Á vista no Pix 20% de desconto.
+    </h5>
+
+    <div class="centro">
+        <form class="formulario" onsubmit="return executa(event)">
+            <input type="number" id="valor" step="any" placeholder="Digite o valor do produto" required><br>
+            <select id="formaPag" required>
+                <option value="">Selecione o método de pagamento</option>
+                <option value="0.15" data-type="desconto">À vista dinheiro</option>
+                <option value="0.1" data-type="desconto">À vista cartão de crédito</option>
+                <option value="0.2" data-type="desconto">À vista PIX</option>
+                <option value="0.1" data-type="juros">Parcelado 2x</option>
+                <option value="0.15" data-type="juros">Parcelado 3x</option>
+            </select><br>
+            <input type="submit" value="Enviar" class="enviar">
+        </form>
+        <button type="button" id="limpar" name="limpar" onclick="limpar()">Limpar</button>
+        <div id="div1">Resultado: </div><br>
+    </div>
+
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>

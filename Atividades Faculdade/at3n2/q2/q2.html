@@ -1,0 +1,36 @@
+<!-- #2. Tendo como dados de entrada a altura e o sexo de uma pessoa, construa um algoritmo que calcule seu peso ideal, utilizando as seguintes fórmulas: a) para homens: (72.7 * h) – 58.0; b) para mulheres: (62.1 * h) – 44.7. -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>q2</title>
+</head>
+
+<link rel="stylesheet" href="./css/estilo.css">
+
+<body>
+    <h5>#2. Tendo como dados de entrada a altura e o sexo de uma pessoa, construa um algoritmo que calcule seu peso
+        ideal, utilizando as seguintes fórmulas: <br>
+        a) para homens: (72.7 * h) – 58.0; <br>
+        b) para mulheres: (62.1 * h) – 44.7.
+    </h5>
+
+    <div class="centro">
+        <form class="formulario" onsubmit="return executa(event)">
+            <input type="number" id="altura" step="any" min="0.1" max="4" placeholder="Digite sua altura"required><br>
+            <input type="text" id="sexo" step="any" pattern="[MFmf]" placeholder="Sexo Masculino (M) Feminino (F)" required><br>
+            <input type="submit" value="Enviar" class="enviar" >
+        </form>
+        <button type="button" id="limpar" name="limpar" onclick="limpar()">Limpar</button>
+        <div id="div1">Resultado: </div><br>
+    </div>
+
+<script src="./js/script.js"></script>
+
+</body>
+
+</html>

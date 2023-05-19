@@ -1,0 +1,37 @@
+html,
+body {
+    margin: 2;
+    padding: 2;
+    font-family: consolas, "times";
+}
+
+.centro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.centro form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.centro input :no-button{
+    width: 200px;
+}
+
+
+.centro .div1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.centro button{
+    margin: 10px;
+}
